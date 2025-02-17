@@ -200,7 +200,7 @@ bindsym F2 exec brightnessctl set 10%-
 bindsym F3 exec brightnessctl set +10%
 
 # For the wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/metallica_wallpaper.webp
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/capadocia.jpg
 
 # For polybar
 exec_always --no-startup-id polybar-msg cmd quit
