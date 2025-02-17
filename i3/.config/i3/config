@@ -190,13 +190,13 @@ bar {
 }
 
 
-# MIO CODICE
+# MY CODE
 bindsym $mod+p exec scrot ~/Pictures/screenshot_%Y-%m-%d_%H-%M-%S.png
 
-# Abbassare la luminosità con F2
+# lower the brightness with F2
 bindsym F2 exec brightnessctl set 10%-
 
-# Aumentare la luminosità con F3
+# make the brightness higher with F3
 bindsym F3 exec brightnessctl set +10%
 
 # For the wallpaper
