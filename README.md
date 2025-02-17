@@ -21,7 +21,7 @@ sudo pacman -S scrot brightnessctl
 For other stuff:
 
 ```sh
-sudo pacman -S polybar
+sudo pacman -S polybar i3-gaps
 ```
 
 ## How to install arch linux
