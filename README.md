@@ -4,3 +4,12 @@ This repository is designed to contain the config file of my i3 configuration in
 
 For this repository I'll use gnu stow to keep my config files up to date.
 
+## Dependencies
+
+In order to configure linux my way, you need to install these dependencies first:
+
+```sh
+sudo pacman -S code git stow
+```
+
+## How to install arch linux
