@@ -18,4 +18,10 @@ For screenshots and brightness:
 sudo pacman -S scrot brightnessctl
 ```
 
+For other stuff:
+
+```sh
+sudo pacman -S polybar
+```
+
 ## How to install arch linux

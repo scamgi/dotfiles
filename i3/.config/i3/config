@@ -199,5 +199,9 @@ bindsym F2 exec brightnessctl set 10%-
 # Aumentare la luminosità con F3
 bindsym F3 exec brightnessctl set +10%
 
+# For the wallpaper
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/metallica_wallpaper.webp
 
+# For polybar
+exec_always --no-startup-id polybar-msg cmd quit
+exec_always --no-startup-id polybar wowbar
