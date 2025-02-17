@@ -12,4 +12,10 @@ In order to configure linux my way, you need to install these dependencies first
 sudo pacman -S code git stow
 ```
 
+For screenshots and brightness:
+
+```sh
+sudo pacman -S scrot brightnessctl
+```
+
 ## How to install arch linux
