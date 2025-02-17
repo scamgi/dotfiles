@@ -207,7 +207,7 @@ exec_always --no-startup-id polybar-msg cmd quit
 exec_always --no-startup-id polybar wowbar
 
 # Set inner and outer gaps
-gaps inner 10
+gaps inner 7
 # gaps outer 10
 
 # You can also specify gaps individually
