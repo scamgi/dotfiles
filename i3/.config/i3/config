@@ -224,3 +224,7 @@ gaps inner 10
 # Decrease gaps
 #bindsym $mod+Shift+minus gaps inner current minus 5
 #bindsym $mod+minus gaps outer current minus 5
+
+# For the windows
+# Remove borders for all windows
+for_window [class=".*"] border none
