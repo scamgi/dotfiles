@@ -1,0 +1,8 @@
+# Command-line tools (Formulae)
+brew "git"
+brew "go"
+brew "node"
+
+# Development Applications (Casks)
+cask "vscodium"
+cask "docker"
