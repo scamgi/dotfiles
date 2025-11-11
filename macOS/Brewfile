@@ -8,3 +8,4 @@ brew "stow"
 # Development Applications (Casks)
 cask "vscodium"
 cask "docker"
+cask "postman"
