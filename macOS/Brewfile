@@ -2,6 +2,8 @@
 brew "git"
 brew "go"
 brew "node"
+brew "starship"
+brew "stow"
 
 # Development Applications (Casks)
 cask "vscodium"
