@@ -52,4 +52,9 @@ echo "› Installing Rust-based tools with cargo..."
 
 cargo install ripgrep bat exa
 
+# --- Stow Configuration Files ---
+echo "› Stowing configuration files..."
+
+stow */
+
 echo "✅ Setup complete. All dependencies are installed and up to date."
