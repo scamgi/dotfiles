@@ -50,7 +50,7 @@ source "$HOME/.cargo/env"
 # --- Cargo-based tools ---
 echo "› Installing Rust-based tools with cargo..."
 
-cargo install ripgrep bat exa
+cargo install ripgrep bat eza
 
 # --- Stow Configuration Files ---
 echo "› Stowing configuration files..."

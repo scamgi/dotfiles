@@ -36,8 +36,8 @@ alias gra='git remote add'
 alias grr='git remote rm'
 alias gst='git status'
 
-# Exa
-alias e='exa -la --icons'
+# Eza
+alias e='eza -la --icons'
 
 # System
 alias sudo='sudo '
