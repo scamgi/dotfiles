@@ -4,6 +4,7 @@ brew "go"
 brew "node"
 brew "starship"
 brew "stow"
+brew "vim"
 
 # Development Applications (Casks)
 cask "vscodium"
