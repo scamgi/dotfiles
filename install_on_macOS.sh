@@ -50,28 +50,6 @@ source "$HOME/.cargo/env"
 # --- Cargo-based tools ---
 echo "› Installing Rust-based tools with cargo..."
 
-# Ripgrep (rg)
-if command_exists rg; then
-  echo "  Ripgrep is already installed."
-else
-  echo "  Installing Ripgrep..."
-  cargo install ripgrep
-fi
-
-# Bat
-if command_exists bat; then
-  echo "  Bat is already installed."
-else
-  echo "  Installing Bat..."
-  cargo install bat
-fi
-
-# Exa
-if command_exists exa; then
-  echo "  Exa is already installed."
-else
-  echo "  Installing Exa..."
-  cargo install exa
-fi
+cargo install ripgrep bat exa
 
 echo "✅ Setup complete. All dependencies are installed and up to date."
