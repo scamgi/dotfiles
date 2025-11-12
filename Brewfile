@@ -14,6 +14,7 @@ brew "gh"
 brew "lazygit"
 brew "kubectl"
 brew "helm"
+brew "tokei"
 
 # Development Applications (Casks)
 cask "vscodium"
