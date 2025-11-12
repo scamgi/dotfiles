@@ -8,6 +8,9 @@ brew "vim"
 brew "tree"
 brew "fastfetch"
 brew "tmux"
+brew "pandoc"
+brew "ncdu"
+brew "gh"
 
 # Development Applications (Casks)
 cask "vscodium"
