@@ -55,6 +55,10 @@ cargo install ripgrep bat eza
 # --- Stow Configuration Files ---
 echo "› Stowing configuration files..."
 
-stow */
+stow fish
+stow kitty
+stow starship
+stow vim
+stow zsh
 
 echo "✅ Setup complete. All dependencies are installed and up to date."
