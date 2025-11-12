@@ -1,0 +1,40 @@
+#!/bin/bash
+
+cat <<'EOF'
+______ _____ ___________ _____ _      _____ _____ 
+|  _  \  _  |_   _|  ___|_   _| |    |  ___/  ___|
+| | | | | | | | | | |_    | | | |    | |__ \ `--. 
+| | | | | | | | | |  _|   | | | |    |  __| `--. \
+| |/ /\ \_/ / | | | |    _| |_| |____| |___/\__/ /
+|___/  \___/  \_/ \_|    \___/\_____/\____/\____/ 
+EOF
+
+# Check minimal dependencies
+if ! command -v git &> /dev/null; then echo "ERROR: git not found. (Try $APT install git)"; exit; fi
+if ! command -v curl &> /dev/null; then echo "ERROR: curl not found. (Try $APT install curl)"; exit; fi
+
+GIT_REPO="https://github.com/oddish3/dotfiles"
+
+set -x
+set -e
+
+# ============================================================================
+
+cd ~
+
+git clone ${GIT_REPO} ~/.dotfiles
+cd ~/.dotfiles
+
+# Get the operative system and run the appropriate installation script
+if [[ "$(uname)" == "Darwin" ]]; then
+    echo "› Running installation for macOS"
+    ./install_on_macOS.sh
+elif [[ "$(uname)" == "Linux" ]]; then
+    echo "› Running installation for Linux"
+    ./install_on_linux.sh
+else
+    echo "Unsupported operating system."
+    exit 1
+fi
+
+echo "All Done!"
