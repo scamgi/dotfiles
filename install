@@ -13,7 +13,7 @@ EOF
 if ! command -v git &> /dev/null; then echo "ERROR: git not found. (Try $APT install git)"; exit; fi
 if ! command -v curl &> /dev/null; then echo "ERROR: curl not found. (Try $APT install curl)"; exit; fi
 
-GIT_REPO="https://github.com/oddish3/dotfiles"
+GIT_REPO="https://github.com/scamgi/dotfiles"
 
 set -x
 set -e

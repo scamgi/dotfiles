@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Guide for scamgi's Dotfiles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+        }
+        h1, h2 {
+            font-family: 'Roboto', sans-serif;
+            color: #bb86fc;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        code {
+            font-family: 'Roboto Mono', monospace;
+            background-color: #2b2b2b;
+            padding: 15px;
+            display: block;
+            border-radius: 5px;
+            position: relative;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+        }
+        .copy-button:hover {
+            background-color: #3700b3;
+            color: #e0e0e0;
+        }
+        .copy-button.copied {
+            background-color: #03dac6;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+        a {
+            color: #03dac6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>scamgi's Dotfiles</h1>
+        <p>Welcome! This site shows you how to easily install and set up my personal development environment using a simple command.</p>
+        
+        <h2>One-Step Installation</h2>
+        <p>To get started, copy and paste the following command into your terminal and press Enter. The script will automatically detect your operating system (macOS or Linux) and run the appropriate installer.</p>
+        
+        <div style="position: relative;">
+            <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+            <code id="install-command">curl -fsSL https://raw.githubusercontent.com/scamgi/dotfiles/main/install | bash</code>
+        </div>
+        
+        <footer>
+            <p>Check out the repository on <a href="https://github.com/scamgi/dotfiles" target="_blank">GitHub</a> for more details.</p>
+            <p>Happy Hacking!</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyToClipboard(button) {
+            const commandText = document.getElementById('install-command').innerText;
+            navigator.clipboard.writeText(commandText).then(() => {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            }, (err) => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
