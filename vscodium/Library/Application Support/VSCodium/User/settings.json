@@ -1,0 +1,18 @@
+{
+    "git.confirmSync": false,
+    "workbench.iconTheme": "symbols",
+    "git.autofetch": true,
+    "haskell.manageHLS": "GHCup",
+    "symbols.hidesExplorerArrows": false,
+    "terminal.integrated.allowedLinkSchemes": [
+        "file",
+        "http",
+        "https",
+        "mailto",
+        "vscode",
+        "vscode-insiders",
+        "docker-desktop"
+    ],
+    "window.autoDetectColorScheme": true,
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono"
+}
