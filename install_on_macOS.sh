@@ -56,7 +56,8 @@ cargo install ripgrep bat eza tokei
 echo "› Stowing configuration files..."
 
 stow fish
-stow kitty
+# stow kitty
+stow alacritty
 stow starship
 stow vim
 stow zsh
