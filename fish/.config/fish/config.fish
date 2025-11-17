@@ -30,6 +30,9 @@ fish_add_path "$HOME/.bun/bin"
 set -x GOPATH "$HOME/go"
 fish_add_path "$GOPATH/bin"
 
+# user local bin
+fish_add_path "/usr/local/bin"
+
 # For Starship
 # fish_add_path /usr/local/bin
 
