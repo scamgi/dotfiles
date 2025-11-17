@@ -7,6 +7,11 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
   "minimap": {
     "show": "always"
   },
@@ -27,8 +32,15 @@
     "folder_icons": true,
     "button": true
   },
-  "icon_theme": "Catppuccin Mocha",
+  "icon_theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
+  },
   "terminal": {
+    "shell": {
+      "program": "/usr/local/bin/fish"
+    },
     "font_family": "FiraCode Nerd Font Mono"
   },
   "tab_size": 2,
