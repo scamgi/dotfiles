@@ -12,3 +12,8 @@ unfocused_hollow = true
 
 [mouse]
 hide_when_typing = true
+
+[terminal]
+
+[terminal.shell]
+program = "/usr/local/bin/fish"

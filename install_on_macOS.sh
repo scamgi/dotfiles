@@ -55,11 +55,16 @@ cargo install ripgrep bat eza tokei
 # --- Stow Configuration Files ---
 echo "› Stowing configuration files..."
 
-stow fish
 # stow kitty
 stow alacritty
 stow starship
 stow vim
-stow zsh
+stow fish
+
+echo "› Setting Fish as the default shell..."
+if ! grep -q "/usr/local/bin/fish" /etc/shells; then
+  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+fi
+chsh -s /usr/local/bin/fish
 
 echo "✅ Setup complete. All dependencies are installed and up to date."

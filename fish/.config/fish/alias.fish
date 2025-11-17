@@ -1,0 +1,52 @@
+# ~/.config/fish/alias.fish
+
+# ------------------------------------------------------------------------------
+# General & System
+# ------------------------------------------------------------------------------
+alias ls "eza --icons --git"
+alias ll "eza --long --header --git --icons"
+alias l "eza --long --header --git --icons --all"
+alias tree "eza --tree"
+alias md "mkdir -p"
+
+# Quick navigation
+alias .. "cd .."
+alias ... "cd ../.."
+alias .... "cd ../../.."
+
+# ------------------------------------------------------------------------------
+# Git & Development
+#
+# Based on your installed tools like git, lazygit, gh, etc.
+# ------------------------------------------------------------------------------
+alias g "git"
+alias gst "git status -s"
+alias ga "git add"
+alias gaa "git add -A"
+alias gcmsg "git commit -m"
+alias gp "git push"
+alias gl "git pull"
+alias gf "git fetch"
+alias glog "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# Lazygit - A terminal UI for git
+alias lg "lazygit"
+
+# ------------------------------------------------------------------------------
+# Update script for macOS
+# ------------------------------------------------------------------------------
+function update
+    echo "› Updating Homebrew..."
+    brew update
+    brew upgrade
+    brew cleanup
+
+    echo "› Updating Rust tools..."
+    rustup update
+    cargo install-update -a
+
+    echo "› Updating Bun..."
+    bun upgrade
+
+    echo "✅ All updates complete."
+end

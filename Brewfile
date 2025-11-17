@@ -15,6 +15,7 @@ brew "lazygit"
 brew "kubectl"
 brew "helm"
 brew "tokei"
+brew "fish"
 
 # Development Applications (Casks)
 cask "vscodium"
@@ -26,3 +27,4 @@ cask "google-chrome"
 cask "firefox"
 cask "discord"
 cask "zed"
+cask "ghostty"
