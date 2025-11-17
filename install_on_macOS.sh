@@ -55,11 +55,17 @@ cargo install ripgrep bat eza tokei
 # --- Stow Configuration Files ---
 echo "› Stowing configuration files..."
 
-# stow kitty
 stow alacritty
 stow starship
 stow vim
 stow fish
+
+# --- Create Fish Symlink for Compatibility ---
+# This ensures /usr/local/bin/fish exists, pointing to the Apple Silicon
+# Homebrew path. This allows consistent configs across architectures.
+sudo mkdir -p /usr/local/bin
+[ ! -e "/usr/local/bin/fish" ] && sudo ln -s /opt/homebrew/bin/fish /usr/local/bin/fish
+# ---
 
 echo "› Setting Fish as the default shell..."
 if ! grep -q "/usr/local/bin/fish" /etc/shells; then
