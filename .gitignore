@@ -1,0 +1,8 @@
+#fish
+fish/.config/fish/functions
+fish/.config/fish/fish_variables
+
+# zed
+zed/.config/zed/prompts
+zed/.config/zed/conversations
+zed/.config/zed/themes
