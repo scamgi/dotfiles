@@ -56,9 +56,14 @@ cargo install ripgrep bat eza tokei
 echo "› Stowing configuration files..."
 
 stow alacritty
+stow fish
+stow ghostty
+stow kitty
 stow starship
 stow vim
-stow fish
+stow vscodium
+stow zed
+stow zsh
 
 # --- Create Fish Symlink for Compatibility ---
 # This ensures /usr/local/bin/fish exists, pointing to the Apple Silicon
