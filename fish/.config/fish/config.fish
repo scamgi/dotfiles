@@ -50,6 +50,8 @@ end
 # Init Zoxide
 zoxide init fish | source
 
+# Init fzf
+fzf --fish | source
 
 # ------------------------------------------------------------------------------
 # Source Other Configuration Files
