@@ -17,6 +17,8 @@ brew "helm"
 brew "tokei"
 brew "fish"
 brew "cbonsai"
+brew "zoxide"
+brew "fzf"
 
 # Development Applications (Casks)
 cask "vscodium"

@@ -10,6 +10,7 @@ alias tree "eza --tree"
 alias md "mkdir -p"
 
 # Quick navigation
+alias cd "z"
 alias .. "cd .."
 alias ... "cd ../.."
 alias .... "cd ../../.."

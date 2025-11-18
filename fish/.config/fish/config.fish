@@ -47,6 +47,9 @@ if command -v starship &> /dev/null
     starship init fish | source
 end
 
+# Init Zoxide
+zoxide init fish | source
+
 
 # ------------------------------------------------------------------------------
 # Source Other Configuration Files
