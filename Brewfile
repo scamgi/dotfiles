@@ -20,6 +20,7 @@ brew "zoxide"
 brew "fzf"
 brew "parallel"
 brew "ranger"
+brew "neovim"
 
 # Development Applications (Casks)
 cask "vscodium"
