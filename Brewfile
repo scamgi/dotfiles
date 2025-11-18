@@ -19,6 +19,8 @@ brew "fish"
 brew "cbonsai"
 brew "zoxide"
 brew "fzf"
+brew "parallel"
+brew "ranger"
 
 # Development Applications (Casks)
 cask "vscodium"
