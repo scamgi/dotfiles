@@ -1,5 +1,4 @@
 # Command-line tools (Formulae)
-brew "git"
 brew "go"
 brew "node"
 brew "starship"
