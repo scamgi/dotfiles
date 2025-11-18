@@ -56,6 +56,7 @@ cargo install ripgrep bat eza tokei
 echo "› Stowing configuration files..."
 
 stow alacritty
+stow bat
 stow fish
 stow ghostty
 stow kitty
