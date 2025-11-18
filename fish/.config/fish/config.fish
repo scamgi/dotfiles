@@ -56,8 +56,3 @@ end
 if test -f ~/.config/fish/alias.fish
     source ~/.config/fish/alias.fish
 end
-
-# You can add more files here as your configuration grows, for example:
-# if test -f ~/.config/fish/functions.fish
-#     source ~/.config/fish/functions.fish
-# end
