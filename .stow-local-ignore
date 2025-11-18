@@ -1,0 +1,8 @@
+.gitignore
+.stow-local-ignore
+Brewfile
+README.md
+docs
+install
+install_on_linux.sh
+install_on_macOS.sh
