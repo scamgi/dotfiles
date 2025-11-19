@@ -48,7 +48,7 @@ if command -v starship &> /dev/null
 end
 
 # Init Zoxide
-zoxide init fish | source
+zoxide init fish | source           # so Ctrl-T and Ctrl-R will work
 
 # Init fzf
 fzf --fish | source

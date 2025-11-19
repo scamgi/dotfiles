@@ -5,6 +5,7 @@
 # ------------------------------------------------------------------------------
 alias ls "eza --icons --git"
 alias ll "eza --long --header --git --icons"
+alias lt 'eza --long --tree --level=2 --icons'
 alias l "eza --long --header --git --icons --all"
 alias tree "eza --tree"
 alias md "mkdir -p"
