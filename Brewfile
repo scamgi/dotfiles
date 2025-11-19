@@ -21,6 +21,7 @@ brew "fzf"
 brew "parallel"
 brew "ranger"
 brew "neovim"
+brew "tldr"
 
 # Development Applications (Casks)
 cask "vscodium"
