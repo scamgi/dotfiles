@@ -29,10 +29,6 @@ $line_break\
 $character"""
 
 # You can choose these themes:
-# catppuccin_mocha
-# catppuccin_frappe
-# catppuccin_macchiato
-# catppuccin_latte
 palette = 'catppuccin_mocha'
 
 # to avoid adding a new line after the prompt
