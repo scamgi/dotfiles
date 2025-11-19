@@ -1,39 +1,38 @@
-" Attiva la numerazione delle righe
+" Enable line numbering
 set number
 
-" Attiva l'evidenziazione della sintassi
+" Enable syntax highlighting
 syntax on
 
-" Imposta il copia/incolla tra Vim e il sistema operativo
+" Enable copy/paste between Vim and the operating system
 set clipboard=unnamedplus
 
-" Mostra sempre la barra di stato
+" Always show the status bar
 set laststatus=2
 
-" Abilita il mouse
+" Enable mouse support
 set mouse=a
 
-" Indentazione automatica
+" Automatic indentation
 set autoindent
 set smartindent
-set expandtab   " Usa spazi invece di tab
-set tabstop=2   " Numero di spazi per un tab
-set shiftwidth=2   " Numero di spazi per l'indentazione
+set expandtab   " Use spaces instead of tabs
+set tabstop=2   " Number of spaces for a tab
+set shiftwidth=2   " Number of spaces for indentation
 
-" Ricerca intelligente (ignora maiuscole/minuscole)
+" Smart search (ignore case)
 set ignorecase
 set smartcase
 set hlsearch
 
-" Salva il file automaticamente quando si cambia buffer
+" Automatically save the file when changing buffers
 set autowrite
 
-" Evita i beep fastidiosi
+" Avoid annoying beeps
 set noerrorbells visualbell
 
-" Spostarsi rapidamente tra le finestre con Ctrl + h/j/k/l
+" Move quickly between windows with Ctrl + h/j/k/l
 "nnoremap <C-h> <C-w>h
 "nnoremap <C-j> <C-w>j
 "nnoremap <C-k> <C-w>k
 "nnoremap <C-l> <C-w>l
-
