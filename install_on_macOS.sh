@@ -1,43 +1,61 @@
 #!/bin/bash
 
-# A script to set up a new macOS machine for development.
-
-# Function to check if a command exists
-command_exists() {
-  command -v "$1" &>/dev/null
-}
-
 # --- Homebrew & Brewfile ---
-echo "› Checking for Homebrew..."
-if ! command_exists brew; then
-  echo "  Homebrew not found. Installing..."
+
+# Homebrew installation
+
+read -p 'Do you want to install homebrew? (Y/n) ' installhomebrew
+
+if [[ -z "$installhomebrew" || "$installhomebrew" =~ ^[Yy]$ ]]; then
+  echo "Installing homebrew."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "Homebrew installed."
 else
-  echo "  Homebrew is already installed."
+  echo "Skipped."
 fi
 
-echo "› Updating Homebrew and installing dependencies from Brewfile..."
-# Navigate to the directory where the Brewfile is located
-cd "$(dirname "$0")" || exit
-# Install all dependencies from the Brewfile
-brew bundle
+# Run "brew bundle"
 
-# --- Stow Configuration Files ---
-echo "› Stowing configuration files..."
+read -p 'Do you want run "brew bundle"? (Y/n) ' runbundle
 
-stow */
+if [[ -z "$runbundle" || "$runbundle" =~ ^[Yy]$ ]]; then
+  echo "Running brew bundle..."
+  brew bundle
+  echo "Brew bundle finished."
+else
+  echo "Skipped."
+fi
+
+# Stow Configuration Files
+read -p 'Do you want run stow? (Y/n) ' runstowchoice
+
+if [[ -z "$runstowchoice" || "$runstowchoice" =~ ^[Yy]$ ]]; then
+  echo "Running stow"
+  stow -v */
+  echo "Stowing done."
+else
+  echo "Skipped."
+fi
 
 # --- Create Fish Symlink for Compatibility ---
 # This ensures /usr/local/bin/fish exists, pointing to the Apple Silicon
 # Homebrew path. This allows consistent configs across architectures.
-sudo mkdir -p /usr/local/bin
-[ ! -e "/usr/local/bin/fish" ] && sudo ln -s /opt/homebrew/bin/fish /usr/local/bin/fish
-# ---
 
-echo "› Setting Fish as the default shell..."
-if ! grep -q "/usr/local/bin/fish" /etc/shells; then
-  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+read -p 'Do you want to change default shell to fish? (Y/n) ' defaultshellchoice
+
+if [[-z "$defaultshellchoice" || "$defaultshellchoice" =~ ^[Yy]$ ]]; then
+  sudo mkdir -p /usr/local/bin
+  [ ! -e "/usr/local/bin/fish" ] && sudo ln -s /opt/homebrew/bin/fish /usr/local/bin/fish
+
+  echo "› Setting Fish as the default shell..."
+  if ! grep -q "/usr/local/bin/fish" /etc/shells; then
+    echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+  fi
+  chsh -s /usr/local/bin/fish
+else
+  echo "Skipped."
 fi
-chsh -s /usr/local/bin/fish
+
+# ---
 
 echo "✅ Setup complete. All dependencies are installed and up to date."
