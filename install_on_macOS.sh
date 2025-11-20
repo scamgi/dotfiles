@@ -34,18 +34,6 @@ else
   curl -fsSL https://bun.sh/install | bash
 fi
 
-# Rust (rustc and cargo)
-if command_exists rustc; then
-  echo "  Rust is already installed."
-else
-  echo "  Installing Rust..."
-  # The -y flag skips the confirmation prompt
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-fi
-
-# Add cargo to the path for the current session to ensure subsequent commands can use it
-source "$HOME/.cargo/env"
-
 # --- Stow Configuration Files ---
 echo "› Stowing configuration files..."
 

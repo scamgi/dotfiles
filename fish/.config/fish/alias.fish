@@ -11,7 +11,7 @@ alias tree "eza --tree"
 alias md "mkdir -p"
 
 # Quick navigation
-alias cd "z"
+alias cd z
 alias .. "cd .."
 alias ... "cd ../.."
 alias .... "cd ../../.."
@@ -21,7 +21,7 @@ alias .... "cd ../../.."
 #
 # Based on your installed tools like git, lazygit, gh, etc.
 # ------------------------------------------------------------------------------
-alias g "git"
+alias g git
 alias gst "git status"
 alias ga "git add"
 alias gaa "git add -A"
@@ -32,7 +32,7 @@ alias gf "git fetch"
 alias gd "git diff"
 
 # Lazygit - A terminal UI for git
-alias lg "lazygit"
+alias lg lazygit
 
 # ------------------------------------------------------------------------------
 # Update script for macOS
@@ -42,13 +42,5 @@ function update
     brew update
     brew upgrade
     brew cleanup
-
-    echo "› Updating Rust tools..."
-    rustup update
-    cargo install-update -a
-
-    echo "› Updating Bun..."
-    bun upgrade
-
     echo "✅ All updates complete."
 end

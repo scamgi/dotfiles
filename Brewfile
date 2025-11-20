@@ -25,6 +25,7 @@ brew "ripgrep"
 brew "bat"
 brew "tokei"
 brew "fd"
+brew "rust"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)
