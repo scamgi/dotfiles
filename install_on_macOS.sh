@@ -4,7 +4,7 @@
 
 # Function to check if a command exists
 command_exists() {
-  command -v "$1" &> /dev/null
+  command -v "$1" &>/dev/null
 }
 
 # --- Homebrew & Brewfile ---
@@ -45,12 +45,6 @@ fi
 
 # Add cargo to the path for the current session to ensure subsequent commands can use it
 source "$HOME/.cargo/env"
-
-
-# --- Cargo-based tools ---
-echo "› Installing Rust-based tools with cargo..."
-
-cargo install ripgrep bat eza tokei fd
 
 # --- Stow Configuration Files ---
 echo "› Stowing configuration files..."

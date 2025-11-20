@@ -20,6 +20,11 @@ brew "parallel"      # Execute jobs in parallel
 brew "ranger"        # Console file manager
 brew "neovim"        # Modern Vim-based editor
 brew "tldr"          # Simplified man pages
+brew "eza"
+brew "ripgrep"
+brew "bat"
+brew "tokei"
+brew "fd"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)
