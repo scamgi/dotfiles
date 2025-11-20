@@ -26,6 +26,7 @@ brew "bat"
 brew "tokei"
 brew "fd"
 brew "rust"
+brew "oven-sh/bun/bun"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)

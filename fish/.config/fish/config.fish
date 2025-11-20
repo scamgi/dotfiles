@@ -20,9 +20,6 @@ set -U fish_greeting
 # Homebrew (for macOS)
 fish_add_path /opt/homebrew/bin
 
-# Bun JS Runtime
-fish_add_path "$HOME/.bun/bin"
-
 # Go
 set -x GOPATH "$HOME/go"
 fish_add_path "$GOPATH/bin"

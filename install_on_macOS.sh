@@ -22,18 +22,6 @@ cd "$(dirname "$0")" || exit
 # Install all dependencies from the Brewfile
 brew bundle
 
-# --- Other Installations (Not managed by Homebrew) ---
-
-echo "› Installing tools not managed by Brewfile..."
-
-# Bun
-if command_exists bun; then
-  echo "  Bun is already installed."
-else
-  echo "  Installing Bun..."
-  curl -fsSL https://bun.sh/install | bash
-fi
-
 # --- Stow Configuration Files ---
 echo "› Stowing configuration files..."
 
