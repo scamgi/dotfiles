@@ -1,8 +1,5 @@
-#fish
-fish/.config/fish/functions/*
-!fish/.config/fish/functions/switch_theme.fish
+# fish
 fish/.config/fish/fish_variables
-fish/.config/fish/completions
 fish/.config/fish/conf.d
 
 # zed
