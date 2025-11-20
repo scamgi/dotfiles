@@ -4,8 +4,6 @@ brew "node"          # JavaScript runtime
 brew "starship"      # Customizable shell prompt
 brew "stow"          # Symlink manager for dotfiles
 brew "vim"           # Standard text editor
-brew "tree"          # Display directories as trees
-brew "fastfetch"     # System info fetcher (faster Neofetch)
 brew "tmux"          # Terminal multiplexer
 brew "pandoc"        # Universal document converter
 brew "ncdu"          # Disk usage analyzer
@@ -27,10 +25,12 @@ brew "tldr"          # Simplified man pages
 cask "vscodium"      # Open-source VS Code (no telemetry)
 cask "docker"        # Containerization platform
 cask "postman"       # API development tool
-cask "kitty"         # GPU-based terminal emulator
 cask "alacritty"     # Rust-based terminal emulator
 cask "google-chrome" # Web browser
 cask "firefox"       # Web browser
+cask "vivaldi"       # Web browser
 cask "discord"       # Chat and community app
 cask "zed"           # High-performance code editor
-cask "ghostty"       # Modern, native terminal
+cask "font-fira-code-nerd-font" # font for coding
+cask "clockify"      # time tracker
+cask "notion"        # planner
