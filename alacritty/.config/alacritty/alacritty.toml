@@ -19,4 +19,4 @@ hide_when_typing = true
 
 [terminal.shell]
 program = "/usr/local/bin/fish"
-args = ["-l", "-c", "tmux new-session -A -s main"]
+args = ["-l"]
