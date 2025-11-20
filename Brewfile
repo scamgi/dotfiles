@@ -39,5 +39,6 @@ cask "vivaldi"       # Web browser
 cask "discord"       # Chat and community app
 cask "zed"           # High-performance code editor
 cask "font-fira-code-nerd-font" # font for coding
+cask "font-sf-mono-nerd-font-ligaturized"
 cask "clockify"      # time tracker
 cask "notion"        # planner

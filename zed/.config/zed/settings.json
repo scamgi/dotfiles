@@ -41,7 +41,7 @@
     "shell": {
       "program": "/usr/local/bin/fish"
     },
-    "font_family": "FiraCode Nerd Font Mono"
+    "font_family": "Liga SFMono Nerd Font"
   },
   "tab_size": 2,
   "prettier": {
