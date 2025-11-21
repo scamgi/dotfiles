@@ -28,6 +28,7 @@ brew "fd"
 brew "rust"
 brew "oven-sh/bun/bun"
 brew "fastfetch"
+brew "htop"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)
