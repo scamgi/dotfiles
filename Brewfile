@@ -17,7 +17,7 @@ brew "cbonsai"       # ASCII bonsai tree generator
 brew "zoxide"        # Smarter 'cd' navigation
 brew "fzf"           # Command-line fuzzy finder
 brew "parallel"      # Execute jobs in parallel
-brew "ranger"        # Console file manager
+brew "yazi"          # Console file manager
 brew "neovim"        # Modern Vim-based editor
 brew "tldr"          # Simplified man pages
 brew "eza"
