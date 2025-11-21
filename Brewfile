@@ -42,3 +42,4 @@ cask "font-fira-code-nerd-font" # font for coding
 cask "font-sf-mono-nerd-font-ligaturized"
 cask "clockify"      # time tracker
 cask "notion"        # planner
+cask "telegram"      # chat app
