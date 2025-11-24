@@ -30,9 +30,9 @@ brew "oven-sh/bun/bun"
 brew "fastfetch"
 brew "htop"
 # to visualize videos, images and pdfs in ghostty
-brew poppler
-bree imagemagick
-brew ffmpeg
+brew "poppler"
+brew "imagemagick"
+brew "ffmpeg"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)
