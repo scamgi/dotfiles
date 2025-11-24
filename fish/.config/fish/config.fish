@@ -27,6 +27,9 @@ fish_add_path "$GOPATH/bin"
 # user local bin
 fish_add_path /usr/local/bin
 
+# path to flutter
+set -gx PATH "$HOME/flutter/bin" $PATH
+
 # ------------------------------------------------------------------------------
 # Shell Initializations
 #
