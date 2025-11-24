@@ -3,7 +3,7 @@ general.import = [
 ]
 
 [font]
-normal = { family = "FiraCode Nerd Font Mono" }
+normal = { family = "Liga SFMono Nerd Font" }
 size = 15.0
 
 [window]
@@ -19,4 +19,4 @@ hide_when_typing = true
 
 [terminal.shell]
 program = "/usr/local/bin/fish"
-args = ["-l", "-c", "tmux new-session -A -s main"]
+args = ["-l"]

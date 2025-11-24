@@ -6,8 +6,8 @@
 # Set variables that should be available to all programs.
 # The `-x` flag exports the variable.
 # ------------------------------------------------------------------------------
-set -x EDITOR "vim"
-set -x VISUAL "vim"
+set -x EDITOR vim
+set -x VISUAL vim
 set -U fish_greeting
 
 # ------------------------------------------------------------------------------
@@ -18,23 +18,14 @@ set -U fish_greeting
 # ------------------------------------------------------------------------------
 
 # Homebrew (for macOS)
-fish_add_path "/opt/homebrew/bin"
-
-# Rust (Cargo)
-fish_add_path "$HOME/.cargo/bin"
-
-# Bun JS Runtime
-fish_add_path "$HOME/.bun/bin"
+fish_add_path /opt/homebrew/bin
 
 # Go
 set -x GOPATH "$HOME/go"
 fish_add_path "$GOPATH/bin"
 
 # user local bin
-fish_add_path "/usr/local/bin"
-
-# For Starship
-# fish_add_path /usr/local/bin
+fish_add_path /usr/local/bin
 
 # ------------------------------------------------------------------------------
 # Shell Initializations
@@ -42,13 +33,11 @@ fish_add_path "/usr/local/bin"
 # Load and initialize tools that integrate with the shell.
 # ------------------------------------------------------------------------------
 
-# Starship Prompt - A customizable cross-shell prompt
-if command -v starship &> /dev/null
-    starship init fish | source
-end
+# Starship
+starship init fish | source
 
 # Init Zoxide
-zoxide init fish | source           # so Ctrl-T and Ctrl-R will work
+zoxide init fish | source
 
 # Init fzf
 fzf --fish | source

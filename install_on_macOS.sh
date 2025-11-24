@@ -1,73 +1,61 @@
 #!/bin/bash
 
-# A script to set up a new macOS machine for development.
-
-# Function to check if a command exists
-command_exists() {
-  command -v "$1" &> /dev/null
-}
-
 # --- Homebrew & Brewfile ---
-echo "› Checking for Homebrew..."
-if ! command_exists brew; then
-  echo "  Homebrew not found. Installing..."
+
+# Homebrew installation
+
+read -p 'Do you want to install homebrew? (Y/n) ' installhomebrew
+
+if [[ -z "$installhomebrew" || "$installhomebrew" =~ ^[Yy]$ ]]; then
+  echo "Installing homebrew."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "Homebrew installed."
 else
-  echo "  Homebrew is already installed."
+  echo "Skipped."
 fi
 
-echo "› Updating Homebrew and installing dependencies from Brewfile..."
-# Navigate to the directory where the Brewfile is located
-cd "$(dirname "$0")" || exit
-# Install all dependencies from the Brewfile
-brew bundle
+# Run "brew bundle"
 
-# --- Other Installations (Not managed by Homebrew) ---
+read -p 'Do you want run "brew bundle"? (Y/n) ' runbundle
 
-echo "› Installing tools not managed by Brewfile..."
-
-# Bun
-if command_exists bun; then
-  echo "  Bun is already installed."
+if [[ -z "$runbundle" || "$runbundle" =~ ^[Yy]$ ]]; then
+  echo "Running brew bundle..."
+  brew bundle
+  echo "Brew bundle finished."
 else
-  echo "  Installing Bun..."
-  curl -fsSL https://bun.sh/install | bash
+  echo "Skipped."
 fi
 
-# Rust (rustc and cargo)
-if command_exists rustc; then
-  echo "  Rust is already installed."
+# Stow Configuration Files
+read -p 'Do you want run stow? (Y/n) ' runstowchoice
+
+if [[ -z "$runstowchoice" || "$runstowchoice" =~ ^[Yy]$ ]]; then
+  echo "Running stow"
+  stow -v */
+  echo "Stowing done."
 else
-  echo "  Installing Rust..."
-  # The -y flag skips the confirmation prompt
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  echo "Skipped."
 fi
-
-# Add cargo to the path for the current session to ensure subsequent commands can use it
-source "$HOME/.cargo/env"
-
-
-# --- Cargo-based tools ---
-echo "› Installing Rust-based tools with cargo..."
-
-cargo install ripgrep bat eza tokei fd
-
-# --- Stow Configuration Files ---
-echo "› Stowing configuration files..."
-
-stow */
 
 # --- Create Fish Symlink for Compatibility ---
 # This ensures /usr/local/bin/fish exists, pointing to the Apple Silicon
 # Homebrew path. This allows consistent configs across architectures.
-sudo mkdir -p /usr/local/bin
-[ ! -e "/usr/local/bin/fish" ] && sudo ln -s /opt/homebrew/bin/fish /usr/local/bin/fish
-# ---
 
-echo "› Setting Fish as the default shell..."
-if ! grep -q "/usr/local/bin/fish" /etc/shells; then
-  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+read -p 'Do you want to change default shell to fish? (Y/n) ' defaultshellchoice
+
+if [[-z "$defaultshellchoice" || "$defaultshellchoice" =~ ^[Yy]$ ]]; then
+  sudo mkdir -p /usr/local/bin
+  [ ! -e "/usr/local/bin/fish" ] && sudo ln -s /opt/homebrew/bin/fish /usr/local/bin/fish
+
+  echo "› Setting Fish as the default shell..."
+  if ! grep -q "/usr/local/bin/fish" /etc/shells; then
+    echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+  fi
+  chsh -s /usr/local/bin/fish
+else
+  echo "Skipped."
 fi
-chsh -s /usr/local/bin/fish
+
+# ---
 
 echo "✅ Setup complete. All dependencies are installed and up to date."
