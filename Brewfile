@@ -29,12 +29,17 @@ brew "rust"
 brew "oven-sh/bun/bun"
 brew "fastfetch"
 brew "htop"
+# to visualize videos, images and pdfs in ghostty
+brew poppler
+bree imagemagick
+brew ffmpeg
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)
 cask "docker"        # Containerization platform
 cask "postman"       # API development tool
 cask "alacritty"     # Rust-based terminal emulator
+cask "ghostty"
 cask "google-chrome" # Web browser
 cask "firefox"       # Web browser
 cask "vivaldi"       # Web browser
