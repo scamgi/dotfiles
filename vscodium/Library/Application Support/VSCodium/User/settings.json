@@ -1,5 +1,7 @@
 {
     "dart.flutterSdkPath": "/Users/polimi/flutter",
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "workbench.iconTheme": "catppuccin-mocha"
+    "workbench.colorTheme": "Catppuccin Latte",
+    "workbench.iconTheme": "catppuccin-latte",
+    "git.autofetch": true,
+    "git.confirmSync": false
 }
