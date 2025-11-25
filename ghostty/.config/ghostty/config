@@ -19,4 +19,4 @@ cursor-style-blink = true
 mouse-hide-while-typing = true
 
 # --- Shell ---
-command = /usr/local/bin/fish -l
+command = /usr/local/bin/fish -l -c "tmux attach || tmux new-session"
