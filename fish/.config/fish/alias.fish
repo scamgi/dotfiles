@@ -21,18 +21,18 @@ alias .... "cd ../../.."
 #
 # Based on your installed tools like git, lazygit, gh, etc.
 # ------------------------------------------------------------------------------
-alias g git
-alias gst "git status"
-alias ga "git add"
-alias gaa "git add -A"
-alias gcmsg "git commit -m"
-alias gp "git push"
-alias gl "git pull"
-alias gf "git fetch"
-alias gd "git diff"
+abbr --add g git
+abbr --add gst "git status"
+abbr --add ga "git add"
+abbr --add gaa "git add -A"
+abbr --add gcmsg "git commit -m"
+abbr --add gp "git push"
+abbr --add gl "git pull"
+abbr --add gf "git fetch"
+abbr --add gd "git diff"
 
 # Lazygit - A terminal UI for git
-alias lg lazygit
+abbr --add lg lazygit
 
 # ------------------------------------------------------------------------------
 # Update script for macOS
