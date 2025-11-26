@@ -29,6 +29,7 @@ brew "rust"
 brew "oven-sh/bun/bun"
 brew "fastfetch"
 brew "htop"
+brew "watch"
 # to visualize videos, images and pdfs in ghostty
 brew "poppler"
 brew "imagemagick"
