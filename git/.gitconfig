@@ -1,3 +1,7 @@
 [user]
 	name = Giacomo
-	email = scampini.giacomo@gmail.com
+  email = scampini.giacomo@gmail.com
+
+[core]
+  editor = nvim
+
