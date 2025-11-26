@@ -31,7 +31,26 @@ read -p 'Do you want run stow? (Y/n) ' runstowchoice
 
 if [[ -z "$runstowchoice" || "$runstowchoice" =~ ^[Yy]$ ]]; then
   echo "Running stow"
-  stow -v */
+
+  PACKAGES=(
+    "alacritty"
+    "bat"
+    "fish"
+    "ghostty"
+    "git"
+    "nvim"
+    "starship"
+    "tmux"
+    "vscodium"
+    "yazi"
+    "zed"
+  )
+
+  for package in "${PACKAGES[@]}"; do
+    echo "Stowing $package..."
+    stow -t "$HOME" "$package"
+  done
+
   echo "Stowing done."
 else
   echo "Skipped."
