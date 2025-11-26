@@ -4,6 +4,9 @@
 # (Vim swap files)
 *.swp 
 
+# tmux plugins
+tmux/.config/tmux/plugins/
+
 # fish
 fish/.config/fish/fish_variables
 fish/.config/fish/conf.d
