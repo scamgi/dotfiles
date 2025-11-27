@@ -2,6 +2,7 @@ function set_theme --argument-names mode
     set ghostty_path ~/.config/ghostty/config
     set starship_path ~/.config/starship.toml
     set tmux_path ~/.config/tmux/tmux.conf
+    set nvim_path ~/.config/nvim/lua/plugins/colorscheme.lua
 
     if test -z "$mode"
         if grep -q Mocha $ghostty_path
@@ -25,6 +26,12 @@ function set_theme --argument-names mode
         set content (cat $starship_path)
         string replace -r "palette = .*" "palette = 'catppuccin_latte'" $content >$starship_path
 
+        # neovim
+        if test -f $nvim_path
+            set content (cat $nvim_path)
+            string replace -r 'flavour = "[a-z]+"' 'flavour = "latte"' $content >$nvim_path
+        end
+
         # tmux
         if test -f $tmux_path
             set content (cat $tmux_path)
@@ -47,6 +54,12 @@ function set_theme --argument-names mode
         # starship
         set content (cat $starship_path)
         string replace -r "palette = .*" "palette = 'catppuccin_mocha'" $content >$starship_path
+
+        # neovim
+        if test -f $nvim_path
+            set content (cat $nvim_path)
+            string replace -r 'flavour = "[a-z]+"' 'flavour = "mocha"' $content >$nvim_path
+        end
 
         # tmux
         if test -f $tmux_path
