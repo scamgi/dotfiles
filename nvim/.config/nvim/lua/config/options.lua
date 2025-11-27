@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 -- Disable relative line numbers
-vim.opt.relativenumber = false
+-- vim.opt.relativenumber = false
 
 -- Ensure standard line numbers are enabled
-vim.opt.number = true
+-- vim.opt.number = true
