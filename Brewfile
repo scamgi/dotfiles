@@ -32,6 +32,7 @@ brew "htop"
 brew "watch"
 brew "lazydocker"
 brew "btop"
+brew "derailed/k9s/k9s"
 # to visualize videos, images and pdfs in ghostty
 brew "poppler"
 brew "imagemagick"
