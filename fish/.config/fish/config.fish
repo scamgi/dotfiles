@@ -6,8 +6,8 @@
 # Set variables that should be available to all programs.
 # The `-x` flag exports the variable.
 # ------------------------------------------------------------------------------
-set -x EDITOR vim
-set -x VISUAL vim
+set -x EDITOR nvim
+set -x VISUAL nvim
 set -U fish_greeting
 
 # ------------------------------------------------------------------------------
