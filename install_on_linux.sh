@@ -1,230 +1,152 @@
 #!/bin/bash
 
-# Stop execution on error
 set -e
 
-# Prevents popups (like "Service Restart" dialogs) during apt installation
-export DEBIAN_FRONTEND=noninteractive
-
-# Colors for logging
+# Colors
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-log() {
-    echo -e "${BLUE}› ${NC}$1"
-}
+log() { echo -e "${BLUE}› ${NC}$1"; }
+success() { echo -e "${GREEN}✔ $1${NC}"; }
 
-success() {
-    echo -e "${GREEN}✔ $1${NC}"
-}
-
-# Check for sudo/root
-if [ "$EUID" -ne 0 ]; then 
-    echo "Please run as root (sudo ./install_on_linux.sh)"
-    exit
+# Check if running as root (Arch usually runs makepkg as user, but pacman as root)
+# We will use 'sudo' inside the script where necessary.
+if [ "$EUID" -eq 0 ]; then
+    echo "Please run this script as a NORMAL user (with sudo privileges), not root."
+    exit 1
 fi
 
-log "Cleaning up broken PPA definitions..."
-# FIX: Aggressively remove any source list file that contains 'fish-shell'
-# This fixes the 404 error caused by the 'questing' codename
-find /etc/apt/sources.list.d/ -name "*fish-shell*" -type f -delete
-# Also try standard remove in case it's registered differently
-if command -v add-apt-repository &> /dev/null; then
-    add-apt-repository --remove -y ppa:fish-shell/release-3 || true
-fi
+log "Updating system..."
+sudo pacman -Syu --noconfirm
 
-log "Updating system and installing build essentials..."
-apt update
-apt upgrade -y
-apt install -y build-essential curl wget git unzip tar software-properties-common
+log "Installing git and base-devel (required for AUR)..."
+sudo pacman -S --needed --noconfirm git base-devel
 
 # ==============================================================================
-# 1. Desktop Environment (i3) & System Utilities
+# 1. Install AUR Helper (yay)
+#    This allows us to install everything (Official + AUR) with one command.
 # ==============================================================================
-log "Installing i3 Window Manager and utilities..."
-# Installing i3, Picom (compositor), Rofi (launcher), Dunst (notifications), Polybar
-apt install -y i3 i3-wm i3lock xss-lock network-manager-gnome \
-    picom rofi dunst polybar feh lxappearance \
-    thunar # File manager (gui)
-
-# ==============================================================================
-# 2. CLI Tools (APT)
-# ==============================================================================
-log "Installing CLI tools via APT..."
-apt install -y \
-    stow \
-    vim \
-    tmux \
-    pandoc \
-    ncdu \
-    fzf \
-    parallel \
-    ripgrep \
-    ffmpeg \
-    imagemagick \
-    poppler-utils \
-    htop \
-    watch \
-    zsh \
-    libssl-dev pkg-config # Dependencies for Rust/Go builds
-
-# Bat and Fd often have naming conflicts in Debian/Ubuntu
-apt install -y bat fd-find
-
-# Create symlinks to match standard names (batcat -> bat, fdfind -> fd)
-mkdir -p ~/.local/bin
-ln -sf /usr/bin/batcat ~/.local/bin/bat
-ln -sf /usr/bin/fdfind ~/.local/bin/fd
-
-# ==============================================================================
-# 3. Shells & Modern Replacements
-# ==============================================================================
-log "Installing Fish Shell..."
-# We use the default repository version to avoid PPA codename errors
-apt install -y fish
-
-log "Installing Starship Prompt..."
-curl -sS https://starship.rs/install.sh | sh -s -- -y
-
-log "Installing Zoxide..."
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-
-log "Installing Bun..."
-curl -fsSL https://bun.sh/install | bash
-
-log "Installing TLDR..."
-apt install -y tldr
-tldr --update
-
-# ==============================================================================
-# 4. Programming Languages & Runtimes
-# ==============================================================================
-log "Installing Rust (Rustup)..."
-if ! command -v rustup &> /dev/null; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-    source $HOME/.cargo/env
+if ! command -v yay &> /dev/null; then
+    log "Installing yay (AUR helper)..."
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    cd /tmp/yay
+    makepkg -si --noconfirm
+    cd -
+    rm -rf /tmp/yay
 else
-    log "Rust is already installed."
+    log "yay is already installed."
 fi
 
-log "Installing Go..."
-snap install go --classic
+# ==============================================================================
+# 2. Main Installation
+#    We install EVERYTHING via yay.
+# ==============================================================================
+log "Installing Packages..."
 
-log "Installing Node.js (via Snap for latest LTS)..."
-snap install node --classic
+# List of packages mapping your Brewfile/Dotfiles to Arch packages
+PACKAGES=(
+    # --- System & Desktop (i3) ---
+    "xorg-server" "xorg-xinit"  # Display server
+    "i3-wm" "i3lock" "i3status" # Window manager
+    "polybar"                   # Status bar
+    "dunst"                     # Notifications
+    "picom"                     # Compositor (transparency/blur)
+    "rofi"                      # App launcher
+    "feh"                       # Wallpaper setter
+    "lxappearance"              # GTK theme switcher
+    "thunar"                    # GUI File Manager
+    "network-manager-applet"    # Wifi tray icon
+    "pipewire" "pipewire-pulse" # Audio
+    "ttf-font-awesome"          # Icons for Polybar
+
+    # --- CLI Tools (Official Arch Repos) ---
+    "git"
+    "stow"
+    "neovim"        # Latest version is in official repo
+    "vim"
+    "tmux"
+    "fish"
+    "starship"
+    "zoxide"
+    "fzf"
+    "bat"           # Named correctly as 'bat'
+    "fd"            # Named correctly as 'fd'
+    "ripgrep"
+    "eza"
+    "yazi"          # Official repo! No cargo install needed
+    "lazygit"       # Official repo!
+    "github-cli"    # gh
+    "tealdeer"      # Rust version of tldr
+    "btop"
+    "htop"
+    "fastfetch"
+    "jq"
+    "poppler"       # PDF preview for yazi
+    "ffmpeg"
+    "imagemagick"
+    "unzip"
+    "wget"
+    "man-db"
+    "zsh"
+
+    # --- Languages & Runtimes ---
+    "go"
+    "rustup"        # Toolchain manager for Rust
+    "nodejs"
+    "npm"
+    "bun-bin"       # AUR
+
+    # --- Development Tools ---
+    "docker"
+    "docker-compose"
+    "lazydocker"    # AUR
+    "k9s"           # Kubernetes CLI
+    "tokei"         # Line counter
+
+    # --- GUI Apps ---
+    "alacritty"
+    "firefox"
+    "vscodium-bin"  # AUR (Binary version is faster to install)
+    "zed"           # Official repo (recently added)
+    "postman-bin"   # AUR
+    "discord"
+    "telegram-desktop"
+    
+    # --- Fonts (Nerd Fonts) ---
+    "ttf-firacode-nerd"
+    "ttf-jetbrains-mono-nerd"
+)
+
+# Install all packages in one go
+# --needed skips already installed packages
+# --noconfirm answers "yes" to everything
+yay -S --needed --noconfirm "${PACKAGES[@]}"
 
 # ==============================================================================
-# 5. Cargo Packages (Rust Tools)
+# 3. Post-Install Configuration
 # ==============================================================================
-log "Installing Rust-based tools (This may take a while)..."
-# Ensure cargo path is available
-export PATH="$HOME/.cargo/bin:$PATH"
 
-cargo install tokei      # LOC counter
-cargo install eza        # ls replacement
-cargo install --locked yazi-fm  # File manager
-cargo install --locked zellij   # Multiplexer (optional, similar to tmux)
-
-# ==============================================================================
-# 6. Specific Tools (Scripts/GitHub)
-# ==============================================================================
-log "Installing GitHub CLI..."
-if ! command -v gh &> /dev/null; then
-    mkdir -p -m 755 /etc/apt/keyrings
-    wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null
-    chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-    apt update 
-    apt install -y gh
+log "Configuring Rust..."
+if command -v rustup &> /dev/null; then
+    rustup default stable
 fi
 
-log "Installing LazyGit & LazyDocker..."
-go install margin.github.io/lazygit@latest
-go install margin.github.io/lazydocker@latest
+log "Configuring Docker..."
+sudo systemctl enable --now docker.service
+sudo usermod -aG docker $USER
 
-log "Installing K9s (Kubernetes UI)..."
-snap install k9s
-
-log "Installing Neovim (Latest via Snap)..."
-snap install nvim --classic
-
-# ==============================================================================
-# 7. GUI Applications (Snap/Flatpak/Deb)
-# ==============================================================================
-log "Installing GUI Applications..."
-
-# Browsers
-log "Installing Browsers..."
-snap install firefox
-# Google Chrome (Handle manually as arch might be arm64 or amd64)
-# We use a conditional check for architecture here
-ARCH=$(dpkg --print-architecture)
-if [ "$ARCH" = "amd64" ]; then
-    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    apt install -y ./google-chrome-stable_current_amd64.deb
-    rm google-chrome-stable_current_amd64.deb
-else
-    log "Skipping Google Chrome (not supported on $ARCH via standard .deb)"
+log "Setting default shell to Fish..."
+# Add fish to shells list if not present
+if ! grep -q "$(which fish)" /etc/shells; then
+    which fish | sudo tee -a /etc/shells
 fi
+# Change shell
+sudo chsh -s "$(which fish)" $USER
 
-# Development
-log "Installing VSCode (VSCodium)..."
-snap install codium --classic
-
-log "Installing Postman..."
-snap install postman
-
-log "Installing Docker..."
-# Using the convenience script
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-usermod -aG docker $SUDO_USER
-rm get-docker.sh
-
-log "Installing Alacritty..."
-# Use PPA only if we suspect it works, otherwise default to apt if available, or cargo
-# Given previous errors, we will try apt first, then cargo if apt fails.
-if apt-cache show alacritty > /dev/null 2>&1; then
-    apt install -y alacritty
-else
-    log "Alacritty not in default repos, installing via Cargo (slow)..."
-    apt install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-    cargo install alacritty
-fi
-
-log "Installing Productivity Apps..."
-snap install discord
-snap install notion-snap-reborn # Unofficial snap for Notion
-snap install telegram-desktop
-
-# Zed Editor (Official script)
-log "Installing Zed Editor..."
-curl -f https://zed.dev/install.sh | sh
-
-# ==============================================================================
-# 8. Fonts (Nerd Fonts)
-# ==============================================================================
-log "Installing Fonts..."
-FONT_DIR="/usr/local/share/fonts"
-mkdir -p $FONT_DIR
-
-# FiraCode Nerd Font
-wget -P /tmp https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-unzip -o /tmp/FiraCode.zip -d $FONT_DIR
-rm /tmp/FiraCode.zip
-
-# JetBrainsMono as fallback for SF Mono
-wget -P /tmp https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-unzip -o /tmp/JetBrainsMono.zip -d $FONT_DIR
-rm /tmp/JetBrainsMono.zip
-
-fc-cache -fv
-
-# ==============================================================================
-# 9. Cleanup
-# ==============================================================================
 log "Cleaning up..."
-apt autoremove -y
+yay -Yc --noconfirm # Remove unused dependencies
 
-success "Installation complete!"
+success "Installation Complete!"
+log "Note: All packages (System, CLI, GUI, Fonts) are managed by Pacman/Yay."
+log "To update everything in the future, simply run: yay"
