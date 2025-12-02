@@ -40,7 +40,7 @@ brew "ffmpeg"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)
-cask "docker"        # Containerization platform
+cask "docker-desktop" # Containerization platform
 cask "postman"       # API development tool
 cask "alacritty"     # Rust-based terminal emulator
 cask "ghostty"
