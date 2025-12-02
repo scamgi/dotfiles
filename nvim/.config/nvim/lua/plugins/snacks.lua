@@ -3,11 +3,15 @@ return {
   opts = {
     picker = {
       sources = {
+        explorer = {
+          hidden = true,
+          ignored = true,
+        },
         files = {
-          hidden = true, -- Show hidden files (starting with dot)
+          hidden = true,
         },
         grep = {
-          hidden = true, -- Also search hidden files when grepping
+          hidden = true,
         },
       },
     },
