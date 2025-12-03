@@ -1,0 +1,61 @@
+gui:
+  # Use the mocha catppuccin theme
+  theme:
+    activeBorderColor:
+      - '#89b4fa'
+      - bold
+    inactiveBorderColor:
+      - '#a6adc8'
+    optionsTextColor:
+      - '#89b4fa'
+    selectedLineBgColor:
+      - '#313244'
+    cherryPickedCommitBgColor:
+      - '#45475a'
+    cherryPickedCommitFgColor:
+      - '#89b4fa'
+    unstagedChangesColor:
+      - '#f38ba8'
+    defaultFgColor:
+      - '#cdd6f4'
+    searchingActiveBorderColor:
+      - '#f9e2af'
+
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never
+
+customCommands:
+  - key: 'C'
+    command: 'git diff --cached --quiet && echo "❌ Error: No files staged to commit!" && exit 1 || git commit -m "{{.Form.Type}}: {{.Form.Message}}"'
+    context: 'files'
+    loadingText: 'Committing...'
+    description: 'Commit with conventional commit format'
+    prompts:
+      - type: 'menu'
+        title: 'Commit Type'
+        key: 'Type'
+        options:
+          - name: 'feat'
+            description: 'A new feature'
+            value: 'feat'
+          - name: 'fix'
+            description: 'A bug fix'
+            value: 'fix'
+          - name: 'docs'
+            description: 'Documentation only changes'
+            value: 'docs'
+          - name: 'style'
+            description: 'Changes that do not affect the meaning of the code'
+            value: 'style'
+          - name: 'refactor'
+            description: 'A code change that neither fixes a bug nor adds a feature'
+            value: 'refactor'
+          - name: 'perf'
+            description: 'A code change that improves performance'
+            value: 'perf'
+      - type: 'input'
+        title: 'Commit Message'
+        key: 'Message'
+        initialValue: ''
