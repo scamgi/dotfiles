@@ -32,7 +32,9 @@ yay -Sy go \
 # watch \ # not available in yay
 lazydocker \
   btop \
-  k9s
+  k9s \
+  nerd-fonts-fira-code \
+  ttf-firacode-nerd
 
 sudo pacman -S git-delta
 sudo pacman -S ttf-jetbrains-mono # to install jetbrains mono
