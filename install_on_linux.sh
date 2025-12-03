@@ -34,7 +34,8 @@ lazydocker \
   btop \
   k9s \
   nerd-fonts-fira-code \
-  ttf-firacode-nerd
+  ttf-firacode-nerd \
+  polybar
 
 sudo pacman -S git-delta
 sudo pacman -S ttf-jetbrains-mono # to install jetbrains mono
