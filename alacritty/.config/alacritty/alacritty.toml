@@ -1,10 +1,8 @@
-general.import = [
-  "~/.config/alacritty/catppuccin-mocha.toml"
-]
+general.import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 
 [font]
-normal = { family = "Liga SFMono Nerd Font" }
-size = 15.0
+normal = { family = "JetBrains Mono" }
+size = 12.0
 
 [window]
 startup_mode = "Maximized"
@@ -18,5 +16,5 @@ unfocused_hollow = true
 hide_when_typing = true
 
 [terminal.shell]
-program = "/usr/local/bin/fish"
+program = "fish"
 args = ["-l"]
