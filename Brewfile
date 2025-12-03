@@ -33,11 +33,11 @@ brew "watch"
 brew "lazydocker"
 brew "btop"
 brew "derailed/k9s/k9s"
+brew "git-delta"
 # to visualize videos, images and pdfs in ghostty
 brew "poppler"
 brew "imagemagick"
 brew "ffmpeg"
-brew "git-delta"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)
