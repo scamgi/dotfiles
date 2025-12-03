@@ -37,6 +37,7 @@ brew "derailed/k9s/k9s"
 brew "poppler"
 brew "imagemagick"
 brew "ffmpeg"
+brew "git-delta"
 
 # Development Applications (Casks)
 cask "vscodium"      # Open-source VS Code (no telemetry)

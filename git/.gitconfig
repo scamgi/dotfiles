@@ -2,6 +2,21 @@
 	name = Giacomo
   email = scampini.giacomo@gmail.com
 
+[include]
+  path = ~/.config/delta/catppuccin.gitconfig
+
 [core]
   editor = nvim
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  features = catppuccin-mocha
+  navigate = true
+  line-numbers = true
+
+[merge]
+  conflictStyle = zdiff3
 
