@@ -1,6 +1,9 @@
 # macos
 .DS_Store
 
+# i3
+i3/.config/i3/scripts
+
 # (Vim swap files)
 *.swp 
 
