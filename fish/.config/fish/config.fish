@@ -52,6 +52,10 @@ set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 # Preview file content using bat (Catppuccin themed)
 set -gx FZF_CTRL_T_OPTS "--preview 'bat -n --color=always {}'"
 
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
 # ------------------------------------------------------------------------------
 # Source Other Configuration Files
 #
