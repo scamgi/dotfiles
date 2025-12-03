@@ -28,7 +28,7 @@ git:
 
 customCommands:
   - key: 'C'
-    command: 'git commit -m "{{.Form.Type}}: {{.Form.Message}}"'
+    command: 'git diff --cached --quiet && echo "❌ Error: No files staged to commit!" && exit 1 || git commit -m "{{.Form.Type}}: {{.Form.Message}}"'
     context: 'files'
     loadingText: 'Committing...'
     description: 'Commit with conventional commit format'
