@@ -44,3 +44,4 @@ vim.api.nvim_create_user_command("CommentSlayer", function()
 end, {})
 
 vim.keymap.set("n", "<leader>rc", ":CommentSlayer<CR>", { desc = "Remove Comments" })
+vim.keymap.set("n", "<leader>rs", "<cmd>!cat-repo -s<CR>", { desc = "Generate cat-repo.txt" })
