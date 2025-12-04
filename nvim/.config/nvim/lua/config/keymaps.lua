@@ -4,12 +4,47 @@
 
 -- Create a user command for easy access
 vim.api.nvim_create_user_command("CommentSlayer", function()
-  -- Detect filetype to pass the -l flag eventually, defaults to dart for now
+  local ft_map = {
+    c = "c",
+    cpp = "cpp",
+    cs = "csharp",
+    css = "css",
+    dart = "dart",
+    erlang = "erlang",
+    fish = "fish",
+    go = "go",
+    haskell = "haskell",
+    html = "html",
+    java = "java",
+    javascript = "javascript",
+    kotlin = "kotlin",
+    lua = "lua",
+    perl = "perl",
+    php = "php",
+    ps1 = "powershell",
+    python = "python",
+    r = "r",
+    ruby = "ruby",
+    rust = "rust",
+    scheme = "scheme",
+    sh = "shell",
+    bash = "shell",
+    zsh = "shell",
+    solidity = "solidity",
+    sql = "sql",
+    swift = "swift",
+    toml = "toml",
+    typescript = "typescript",
+    yaml = "yaml",
+  }
+
   local ft = vim.bo.filetype
-  if ft == "dart" then
-    vim.cmd("%!commentslayer -l dart")
+  local lang = ft_map[ft]
+
+  if lang then
+    vim.cmd(string.format("%%!commentslayer -l %s", lang))
   else
-    print("CommentSlayer: Language not supported yet")
+    vim.notify("CommentSlayer: Language '" .. ft .. "' not supported yet", vim.log.levels.WARN)
   end
 end, {})
 
