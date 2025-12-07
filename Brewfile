@@ -34,6 +34,7 @@ brew "lazydocker"
 brew "btop"
 brew "derailed/k9s/k9s"
 brew "git-delta"
+brew "google-cloud-sdk"
 # to visualize videos, images and pdfs in ghostty
 brew "poppler"
 brew "imagemagick"
