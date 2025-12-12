@@ -58,3 +58,4 @@ cask "notion"        # planner
 cask "telegram"      # chat app
 cask "brave-browser" # browser
 cask "font-jetbrains-mono-nerd-font"
+cask "todoist"
